@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    {% if request.method == "GET" %}
+        <form action="/quote" method="post">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="stock" placeholder="Stock" type="text">
+            </div>
+            <button class="btn btn-primary" type="submit">Search Stock</button>
+        </form>
+    {% endif %}
+
+    {% if request.method == "POST" %}
+    <h3>{{stock_symbol}}</h3>
+    <h3>{{stock_name}}: {{stock_price | usd}}</h3>
+    {% endif %}
+
+{% endblock %}

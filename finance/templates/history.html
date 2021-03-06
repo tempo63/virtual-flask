@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   History 
+{% endblock %}
+
+{% block main %}
+
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <th scope="col">#</th>
+                <th scope="col">Company</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">QTY</th>
+                <th scope="col">Price</th>
+                <th scope="col">Time</th>
+            </thead>
+            <tbody>
+                {% for txn in stocks %}
+                    <tr>
+                        {% for key,value in txn.items() %} 
+                            <td>
+                                {% if key == "price"%}
+                                    {{value | usd}}
+                                {% else %}
+                                   {{value}}
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

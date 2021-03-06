@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Buy 
+{% endblock %}
+
+{% block main %}
+    {% if request.method == "GET" %}
+        <form action="/buy" method="post">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="stock" placeholder="Stock To Buy" type="text">
+            </div>    
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="qty" placeholder="Quantity" type="text">
+            </div>
+            <button class="btn btn-primary" type="submit">Buy Stock</button>
+        </form>
+    {% endif %}
+
+    {% if request.method == "POST" %}
+    <h3>Your purchase: {{qty}} x {{company_name}} at {{shares | usd}}</h3>
+    {% endif %}
+
+{% endblock %}
